@@ -4,11 +4,18 @@
 
         <div class="form-group">
             <label for="destino">Destino</label>
-            <input type="text" id="destino" formControlName="destino" class="form-control" />
+            <select id="destino" formControlName="destino" class="form-control" required>
+                <option value="" disabled selected>Selecione um destino</option>
+                <option value="Paris">Paris</option>
+                <option value="Nova York">Nova York</option>
+                <option value="Tóquio">Tóquio</option>
+                <option value="Rio de Janeiro">Rio de Janeiro</option>
+            </select>
             <div *ngIf="f['destino'].invalid && (f['destino'].dirty || f['destino'].touched)" class="text-danger">
                 <div *ngIf="f['destino'].errors?.['required']">O destino é obrigatório.</div>
             </div>
         </div>
+clear        
 
         <div class="form-group">
             <label for="dataIda">Data de Ida</label>
