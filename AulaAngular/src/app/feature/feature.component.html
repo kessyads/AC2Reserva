@@ -1,0 +1,27 @@
+<img [src]="caminhoImagem" />
+
+<input
+  type="number"
+  [(ngModel)]="numero1"
+  placeholder="Núm. 1"
+  class="form-control"
+/>
+<input
+  type="number"
+  [(ngModel)]="numero2"
+  placeholder="Núm. 2"
+  class="form-control"
+/>
+<input
+  type="number"
+  [(ngModel)]="resultado"
+  placeholder="Resultado"
+  class="form-control"
+/>
+
+<p>Número 1: {{ numero1 }}</p>
+<p>Número 2: {{ numero2 }}</p>
+<p>Resultado: {{ resultado }}</p>
+
+<button class="btn btn-primary" (click)="somar()">Somar</button>
+<button class="btn btn-danger" (click)="subtrair()">Somar</button>

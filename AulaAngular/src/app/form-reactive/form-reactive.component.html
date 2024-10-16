@@ -1,0 +1,52 @@
+<form [formGroup]="form">
+
+    <!--NOME-->
+    <label class="form-label">Nome</label>
+    <input class="form-control" formControlName="nome" />
+    <div
+      class="error"
+      *ngIf="
+        form.get('nome')!.invalid &&
+        (form.get('nome')!.dirty || form.get('nome')!.touched)
+      "
+    >
+      <div *ngIf="form.get('nome')!.errors?.['required']">Nome é obrigatório</div>
+    </div>
+  
+    <!--EMAIL-->
+    <label class="form-label">E-mail</label>
+    <input class="form-control" formControlName="email" />
+    <div
+      class="error"
+      *ngIf="
+        form.get('email')!.invalid &&
+        (form.get('email')!.dirty || form.get('email')!.touched)
+      "
+    >
+      <div *ngIf="form.get('email')!.errors?.['required']">
+        E-mail é obrigatório
+      </div>
+      <div *ngIf="form.get('email')!.errors?.['email']">
+        E-mail não está em padrão válido
+      </div>
+    </div>
+  
+    <!--CELULAR-->
+    <label class="form-label">Celular</label>
+    <input class="form-control" formControlName="celular" />
+    <div
+      class="error"
+      *ngIf="
+        form.get('celular')!.invalid &&
+        (form.get('celular')!.dirty || form.get('celular')!.touched)
+      "
+    >
+      <div *ngIf="form.get('celular')!.errors?.['required']">Celular é obrigatório</div>
+      <div *ngIf="form.get('celular')!.errors?.['minlength']">O celular deve ter pelo menos 11 dígitos</div>
+      
+    </div>
+  
+    <button [disabled]="form.invalid" type="submit" class="btn btn-primary">
+      Salvar
+    </button>
+</form>

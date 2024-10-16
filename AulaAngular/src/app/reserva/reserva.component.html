@@ -1,0 +1,50 @@
+<div class="container">
+    <h2>Reserva de Viagem</h2>
+    <form [formGroup]="reservaForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label for="destino">Destino</label>
+            <input type="text" id="destino" formControlName="destino" class="form-control" />
+            <div *ngIf="f['destino'].invalid && (f['destino'].dirty || f['destino'].touched)" class="text-danger">
+                <div *ngIf="f['destino'].errors?.['required']">O destino é obrigatório.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="dataIda">Data de Ida</label>
+            <input type="date" id="dataIda" formControlName="dataIda" class="form-control" />
+            <div *ngIf="f['dataIda'].invalid && (f['dataIda'].dirty || f['dataIda'].touched)" class="text-danger">
+                <div *ngIf="f['dataIda'].errors?.['required']">A data de ida é obrigatória.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="dataVolta">Data de Volta</label>
+            <input type="date" id="dataVolta" formControlName="dataVolta" class="form-control" />
+            <div *ngIf="f['dataVolta'].invalid && (f['dataVolta'].dirty || f['dataVolta'].touched)" class="text-danger">
+                <div *ngIf="f['dataVolta'].errors?.['required']">A data de volta é obrigatória.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="numeroPassageiros">Número de Passageiros</label>
+            <input type="number" id="numeroPassageiros" formControlName="numeroPassageiros" class="form-control" />
+            <div *ngIf="f['numeroPassageiros'].invalid && (f['numeroPassageiros'].dirty || f['numeroPassageiros'].touched)" class="text-danger">
+                <div *ngIf="f['numeroPassageiros'].errors?.['required']">O número de passageiros é obrigatório.</div>
+                <div *ngIf="f['numeroPassageiros'].errors?.['min']">Deve ser pelo menos 1.</div>
+                <div *ngIf="f['numeroPassageiros'].errors?.['max']">Deve ser no máximo 5.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="emailContato">E-mail de Contato</label>
+            <input type="email" id="emailContato" formControlName="emailContato" class="form-control" />
+            <div *ngIf="f['emailContato'].invalid && (f['emailContato'].dirty || f['emailContato'].touched)" class="text-danger">
+                <div *ngIf="f['emailContato'].errors?.['required']">O e-mail é obrigatório.</div>
+                <div *ngIf="f['emailContato'].errors?.['email']">O e-mail deve ser válido.</div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="reservaForm.invalid">Enviar</button>
+    </form>
+</div>

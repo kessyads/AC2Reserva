@@ -1,0 +1,39 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <label class="form-label">Nome</label>
+    <input class="form-control" formControlName="nome" />
+    <div class="error" *ngIf="form.get('nome')!.invalid && (form.get('nome')!.dirty || form.get('nome')!.touched)">
+        <div *ngIf="form.get('nome')!.errors?.['required']">Nome é obrigatório</div>
+    </div>
+  
+    <label class="form-label">RA</label>
+    <input class="form-control" formControlName="ra" />
+    <div class="error2" *ngIf="form.get('ra')!.invalid && (form.get('ra')!.dirty || form.get('ra')!.touched)">
+        <div class="error2" *ngIf="form.get('ra')!.errors?.['required']">RA é obrigatório</div>
+        <div class="error" *ngIf="form.get('ra')!.errors?.['minlength'] || form.get('ra')!.errors?.['maxlength']">RA deve ter exatamente 6 dígitos</div>
+    </div>
+  
+    <label class="form-label">Curso</label>
+    <select class="form-control" formControlName="curso">
+        <option value="">Selecione um curso</option>
+        <option value="curso1">Engenharia Civil</option>
+        <option value="curso2">Engenharia Ambiental</option>
+        <option value="curso3">Engenharia Química</option>
+    </select>
+    <div *ngIf="form.get('curso')!.invalid && (form.get('curso')!.dirty || form.get('curso')!.touched)">
+        <div class="error" *ngIf="form.get('curso')!.errors?.['required']">Curso é obrigatório</div>
+    </div>
+
+    <label class="form-label">Valor do Curso</label>
+    <input type="number" class="form-control" formControlName="valor" />
+    <div class="error" *ngIf="form.get('valor')!.invalid && (form.get('valor')!.dirty || form.get('valor')!.touched)">
+        <div *ngIf="form.get('valor')!.errors?.['required']">Valor do curso é obrigatório</div>
+        <div *ngIf="form.get('valor')!.errors?.['min']">Valor deve ser maior ou igual a 0</div>
+        <div *ngIf="form.get('valor')!.errors?.['max']">Valor deve ser menor ou igual a 100000</div>
+    </div>
+  
+    <label class="form-label">Data da Matrícula</label>
+    <input type="date" class="form-control" formControlName="dataMatricula" [disabled]="true" />
+  
+    <button [disabled]="form.invalid" type="submit" class="btn btn-primary">Salvar</button>
+</form>

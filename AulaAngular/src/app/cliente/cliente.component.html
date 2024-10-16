@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-md-3">
+    <nav>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['lista-cliente']">Clientes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['lista-compra']">Compras</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div class="col-md-9">
+    <router-outlet></router-outlet>
+  </div>
+</div>

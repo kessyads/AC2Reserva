@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-md-6">
+    <input type="checkbox" [(ngModel)]="mostrarAlunos" /> Mostrar alunos
+  </div>
+  <div class="col-md-6">
+    <input
+      class="form-control"
+      type="text"
+      [(ngModel)]="nomeAluno"
+      placeholder="Nome do aluno..."
+    />
+  </div>
+</div>
+<div class="row" *ngIf="mostrarAlunos">
+  <div class="col-12">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Ra</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Curso</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let aluno of alunos">
+          <th scope="row">{{ aluno.ra }}</th>
+          <td
+            [ngStyle]="{
+              'background-color': aluno.nome == nomeAluno ? 'yellow' : 'white'
+            }"
+          >
+            {{ aluno.nome }}
+          </td>
+          <td [ngClass]="{ cursoADS: aluno.curso == 'ADS' }">
+            {{ aluno.curso }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

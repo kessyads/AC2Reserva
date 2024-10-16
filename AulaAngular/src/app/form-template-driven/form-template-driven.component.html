@@ -1,0 +1,46 @@
+<form #form="ngForm" (ngSubmit)="salvar(form)">
+  <label class="form-label">Nome</label>
+  <input [(ngModel)]="cliente.nome" class="form-control" name="nome" required />
+  <div *ngIf="form.submitted && form.controls['nome'].errors" class="error">
+    <div *ngIf="form.controls['nome'].errors['required']">
+      Nome é obrigatório
+    </div>
+  </div>
+
+  <label class="form-label">E-mail</label>
+  <input
+    [(ngModel)]="cliente.email"
+    class="form-control"
+    name="email"
+    required
+    email
+  />
+  <div *ngIf="form.submitted && form.controls['email'].errors" class="error">
+    <div *ngIf="form.controls['email'].errors['required']">
+      E-mail é obrigatório
+    </div>
+    <div *ngIf="form.controls['email'].errors['email']">
+      E-mail não está em padrão válido.
+    </div>
+  </div>
+
+  <label class="form-label">Celular</label>
+  <input
+    [(ngModel)]="cliente.celular"
+    class="form-control"
+    name="celular"
+    required
+    minlength="11"
+
+  />
+  <div *ngIf="form.submitted && form.controls['celular'].errors" class="error">
+    <div *ngIf="form.controls['celular'].errors['required']">
+      Celular é obrigatório
+    </div>
+    <div *ngIf="form.controls['celular'].errors['minlength']">
+      Celular incorreto
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Salvar</button>
+</form>
